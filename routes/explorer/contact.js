@@ -1,7 +1,7 @@
 const express = require('express')
 const rtr = express.Router()
 const nodemailer = require('nodemailer')
-
+const config = require('../../config/key')
 
 // POST contact form
 rtr.post('/contact', function (req, res) {
@@ -9,13 +9,13 @@ rtr.post('/contact', function (req, res) {
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: '',
-      pass: ''
+      user: config.authUser,
+      pass: config.authPass
     }
   });
   var mailOptions = {
     from: req.body.cemail,
-    to: '',
+    to: 'kartik9756@gmail.com',
     subject: req.body.csubject,
     text: msg
   };

@@ -6,6 +6,7 @@ const path = require('path')
 const app = express()
 const cors = require('cors');
 const morgan = require('morgan');
+const config = require('./config/key')
 
 const visiapi = require('./routes/api/visiapi')
 const explorers = require('./routes/explorer/explorer')
@@ -27,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 
 
-mongoose.connect('', {
+mongoose.connect(config.MongoURI, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true
